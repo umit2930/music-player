@@ -13,6 +13,7 @@ import androidx.navigation.Navigation;
 
 import com.example.music.R;
 import com.example.music.databinding.FragmentSplashBinding;
+import com.example.music.viewmodel.ViewModelSplash;
 
 public class SplashFragment extends Fragment {
 
@@ -22,6 +23,9 @@ public class SplashFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding=FragmentSplashBinding.inflate(getLayoutInflater());
+
+        ViewModelSplash viewModelSplash=new ViewModelSplash(getContext());
+        binding.setViewmodel(viewModelSplash);
         return binding.getRoot();
     }
 

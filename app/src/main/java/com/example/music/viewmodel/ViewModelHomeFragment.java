@@ -1,9 +1,16 @@
 package com.example.music.viewmodel;
 
+import android.content.Context;
+import android.widget.TextView;
+
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 import androidx.lifecycle.ViewModel;
 
+import com.example.music.remote.databasetext.AppDatabase;
+import com.example.music.remote.databasetext.TextModel;
+
+import java.util.Locale;
 import java.util.Observable;
 
 public class ViewModelHomeFragment extends BaseObservable {
@@ -13,12 +20,32 @@ public class ViewModelHomeFragment extends BaseObservable {
     private String appName;
     private String favorite;
     private String hintSearch;
+    private Context context;
 
 
 
 
-    public ViewModelHomeFragment() {
+    public ViewModelHomeFragment(Context context) {
         //rome get text
+        this.context=context;
+        getText();
+        System.out.println("--------:"+ Locale.getDefault().getDisplayLanguage());
+    }
+
+    private void getText() {
+
+        AppDatabase db = AppDatabase.getDbInstance(context);
+
+
+        if (Locale.getDefault().getDisplayLanguage().equals("فارسی")){
+
+        }else {
+
+            playList=((TextModel)db.TextDao().findByLan("playList").get(0)).eng;
+
+
+
+        }
     }
 
 

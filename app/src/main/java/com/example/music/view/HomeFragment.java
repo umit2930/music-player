@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.music.databinding.FragmentHomeBinding;
+import com.example.music.viewmodel.ViewModelHomeFragment;
 
 public class HomeFragment extends Fragment {
 
@@ -22,6 +23,11 @@ public class HomeFragment extends Fragment {
         binding=FragmentHomeBinding.inflate(getLayoutInflater());
 
 //        binding.lParent.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+
+        ViewModelHomeFragment viewModelHomeFragment=new ViewModelHomeFragment(getContext());
+        binding.setViewModel(viewModelHomeFragment);
+
         return binding.getRoot();
+
     }
 }

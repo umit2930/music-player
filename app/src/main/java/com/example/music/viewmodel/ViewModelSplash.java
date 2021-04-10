@@ -12,11 +12,10 @@ public class ViewModelSplash  extends BaseObservable {
     Context context;
     public ViewModelSplash (Context context){
         this.context=context;
-        if (new MusicSharedPerf(context).Text()){
+        if (!new MusicSharedPerf(context).Text()){
             saveUser("appName","musicPlayer","موزیک پخش کن");
             saveUser("playList","playList","لیست پخش");
-
-
+            saveUser("favorite","favorite","ذخیره شده");
         }
     }
 

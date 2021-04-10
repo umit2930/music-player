@@ -39,9 +39,15 @@ public class ViewModelHomeFragment extends BaseObservable {
 
         if (Locale.getDefault().getDisplayLanguage().equals("فارسی")){
 
+            playList=((TextModel)db.TextDao().findByLan("playList").get(0)).persian;
+            appName=((TextModel)db.TextDao().findByLan("appName").get(0)).persian;
+            favorite=((TextModel)db.TextDao().findByLan("favorite").get(0)).persian;
+
         }else {
 
             playList=((TextModel)db.TextDao().findByLan("playList").get(0)).eng;
+            appName=((TextModel)db.TextDao().findByLan("appName").get(0)).eng;
+            favorite=((TextModel)db.TextDao().findByLan("favorite").get(0)).eng;
 
 
 

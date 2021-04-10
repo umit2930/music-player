@@ -9,14 +9,84 @@
             type="com.example.music.viewmodel.ViewModelHomeFragment" />
     </data>
 
-    <RelativeLayout
+    <RelativeLayout android:id="@+id/l_parent"
         android:layout_width="match_parent"
+        android:padding="@dimen/_10sdp"
+        android:layoutDirection="ltr"
+        android:background="@color/test_background_app"
         android:layout_height="match_parent">
-        <TextView
+
+        <TextView android:id="@+id/hed_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="library"
-            android:textSize="@dimen/_10sdp"/>
+            android:fontFamily="@font/iran_sans_bold"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_22sdp"/>
+
+        <LinearLayout
+            android:id="@+id/l1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_below="@id/hed_tv"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:padding="@dimen/_6sdp"
+            android:background="@drawable/search_box_background"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:src="@drawable/ic_search_24"
+                android:layout_gravity="center"
+                />
+
+            <EditText android:id="@+id/search_et"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Song or artist..."
+                android:fontFamily="@font/iran_sans_regular"
+                android:textColor="@color/test_purple"
+                android:textSize="@dimen/_16sdp"
+                android:layout_gravity="center"
+                android:textColorHint="@color/white"/>
+
+        </LinearLayout>
+
+        <TextView android:id="@+id/play_list_tv"
+            android:layout_below="@id/l1"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Playlists"
+            android:textSize="@dimen/_20sdp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/iran_sans_bold"
+            />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view__play_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/play_list_tv"
+            android:background="@color/test_purple"
+            />
+        <TextView android:id="@+id/favorite_tv"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Favorite"
+            android:textSize="@dimen/_20sdp"
+            android:fontFamily="@font/iran_sans_bold"
+            android:textColor="@color/white"
+            android:layout_below="@id/recycler_view__play_list"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/favorite_tv"
+            android:background="@color/test_purple"/>
+
 
     </RelativeLayout>
 

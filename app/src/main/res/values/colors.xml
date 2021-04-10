@@ -7,5 +7,6 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="test_purple">#ff16ce</color>
+    <color name="test_background_app">#1c0436</color>
     <color name="white">#FFFFFFFF</color>
 </resources>

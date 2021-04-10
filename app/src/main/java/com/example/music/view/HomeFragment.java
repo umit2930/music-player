@@ -21,6 +21,7 @@ public class HomeFragment extends Fragment {
 
         binding=FragmentHomeBinding.inflate(getLayoutInflater());
 
+//        binding.lParent.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         return binding.getRoot();
     }
 }

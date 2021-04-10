@@ -14,7 +14,7 @@ public  interface TextModelDao {
     public abstract List<TextModel> findByLan(String name);
 
     @Insert
-    void insertUser(TextModel... textModels);
+    void insertText(TextModel... textModels);
 
     @Delete
     abstract void delete(TextModel textModel) ;

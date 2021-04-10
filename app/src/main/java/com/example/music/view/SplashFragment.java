@@ -14,13 +14,13 @@ import com.example.music.databinding.FragmentSplashBinding;
 
 public class SplashFragment extends Fragment {
 
-    View view;
+
+
+    FragmentSplashBinding binding;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view=inflater.inflate(R.layout.fragment_splash,container,false);
-        FragmentSplashBinding binding=FragmentSplashBinding.inflate(getLayoutInflater());
-        binding.getRoot();
-        return view;
+        binding=FragmentSplashBinding.inflate(getLayoutInflater());
+        return binding.getRoot();
     }
 }

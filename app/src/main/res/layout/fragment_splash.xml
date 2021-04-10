@@ -34,21 +34,23 @@
             android:id="@+id/name"
             android:layout_centerHorizontal="true"
             android:layout_above="@id/titale"
-            android:text="music"
+            android:fontFamily="@font/iran_sans_regular"
+            android:text="موزیک پلیر"
             android:layout_marginBottom="@dimen/_10sdp"
-            android:background="@color/white"
-            android:textColor="@color/white"/>
+            android:textColor="@color/test_purple"
+            />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
+            android:fontFamily="@font/iran_sans_regular"
             android:layout_alignParentBottom="true"
             android:id="@+id/titale"
-            android:text="music"
+            android:text="v 1.0.0"
             android:layout_marginBottom="@dimen/_10sdp"
-            android:background="@color/white"
-            android:textColor="@color/white"/>
+            android:textColor="@color/test_purple"
+            />
 
 
 

@@ -30,7 +30,7 @@ public class SplashFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
 
-        new CountDownTimer(7000, 1000) {
+        new CountDownTimer(4000, 1000) {
             public void onTick(long millisUntilFinished) {
             }
 

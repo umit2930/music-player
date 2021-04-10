@@ -1,9 +1,12 @@
 package com.example.music.viewmodel;
 
+import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 import androidx.lifecycle.ViewModel;
 
-public class ViewModelHomeFragment extends ViewModel {
+import java.util.Observable;
+
+public class ViewModelHomeFragment extends BaseObservable {
 
 
     private String playList;

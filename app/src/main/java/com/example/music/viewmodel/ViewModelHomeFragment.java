@@ -5,9 +5,11 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
+import android.provider.MediaStore;
 import android.telecom.Connection;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
@@ -19,12 +21,15 @@ import androidx.lifecycle.ViewModel;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.music.model.Audio;
 import com.example.music.model.PlayListModel;
 import com.example.music.remote.databasetext.AppDatabase;
 import com.example.music.remote.databasetext.TextModel;
+import com.example.music.view.adapter.FavoriteAdapter;
 import com.example.music.view.adapter.PlayListAdapter;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Observable;
 
@@ -40,9 +45,17 @@ public class ViewModelHomeFragment extends BaseObservable {
     public static View view;
 
     private ArrayList<ViewModelPlayListModel> arrayList=new ArrayList<>();
+    private ArrayList<ViewModelItemFavoriteModel> arrayListFavorite=new ArrayList<>();
+
+
 
 
     private MutableLiveData<ArrayList<ViewModelPlayListModel>> mutableLiveData=new MutableLiveData<>();
+
+    private MutableLiveData<ArrayList<ViewModelItemFavoriteModel>> mutableLiveDataFavorite=new MutableLiveData<>();
+
+
+
 
 
 
@@ -74,7 +87,53 @@ public class ViewModelHomeFragment extends BaseObservable {
         mutableLiveData.setValue(arrayList);
 
 
+        getAudioList();
+
     }
+
+    private void getAudioList() {
+        try {
+            Uri uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
+            String[] projection = {MediaStore.Audio.AudioColumns.DATA, MediaStore.Audio.AudioColumns.ALBUM, MediaStore.Audio.ArtistColumns.ARTIST,};
+            String selection = MediaStore.Audio.Media.IS_MUSIC + "!= 0";
+            String sortOrder = MediaStore.Audio.Media.TITLE + " ASC";
+            Cursor c = context.getApplicationContext().getContentResolver().query(uri, projection, selection, null, sortOrder);
+
+
+            Toast.makeText(context, ""+c.getCount(), Toast.LENGTH_SHORT).show();
+
+            System.out.println("-------------------:"+c);
+            if (c != null) {
+                while (c.moveToNext()) {
+                    Audio audioModel = createAudioModel(c);
+                    ViewModelItemFavoriteModel viewModelItemFavoriteModel=new ViewModelItemFavoriteModel(audioModel);
+                    arrayListFavorite.add(viewModelItemFavoriteModel);
+                }
+                c.close();
+            }
+        } catch (SecurityException e) {
+
+        }
+
+        mutableLiveDataFavorite.setValue(arrayListFavorite);
+
+    }
+
+    private Audio createAudioModel(Cursor c) {
+        String path = c.getString(0);
+        String album = c.getString(1);
+        String artist = c.getString(2);
+        String name = path.substring(path.lastIndexOf("/") + 1);
+        Audio audioModel = new Audio();
+        audioModel.setPath(path);
+        audioModel.setAlbum(album);
+        audioModel.setArtist(artist);
+        audioModel.setName(name);
+
+        return audioModel;
+    }
+
+
 
     private void getText() {
 
@@ -116,8 +175,29 @@ public class ViewModelHomeFragment extends BaseObservable {
 
     }
 
+    @BindingAdapter("bind:recyclerViewPlayList")
+    public static void recyclerViewBindingFavorite(RecyclerView recyclerView, MutableLiveData<ArrayList<ViewModelItemFavoriteModel>> arrayListMutableLiveData)
+    {
+        arrayListMutableLiveData.observe((LifecycleOwner) recyclerView.getContext(), new Observer<ArrayList<ViewModelItemFavoriteModel>>() {
+            @Override
+            public void onChanged(ArrayList<ViewModelItemFavoriteModel> userViewModels) {
+                FavoriteAdapter adapter=new FavoriteAdapter(userViewModels,context);
+                recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext(), LinearLayoutManager.VERTICAL,false ));
+                recyclerView.setAdapter(adapter);
+
+            }
+        });
+
+
+
+
+    }
+
     public MutableLiveData<ArrayList<ViewModelPlayListModel>> getMutableLiveData() {
         return mutableLiveData;
+    }
+    public MutableLiveData<ArrayList<ViewModelItemFavoriteModel>> getMutableLiveDataFavorite() {
+        return mutableLiveDataFavorite;
     }
 
     @Bindable

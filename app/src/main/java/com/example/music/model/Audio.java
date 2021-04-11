@@ -1,26 +1,14 @@
-package com.example.music.viewmodel;
+package com.example.music.model;
 
-import androidx.databinding.BaseObservable;
-import androidx.databinding.Bindable;
-
-import com.example.music.model.Audio;
-
-public class ViewModelItemFavoriteModel extends BaseObservable {
-
+public class Audio {
     private String path;
     private String name;
     private String album;
     private String artist;
 
-    public ViewModelItemFavoriteModel(Audio audio) {
-        this.path = audio.getPath();
-        this.name = audio.getName();
-        this.album = audio.getAlbum();
-        this.artist = audio.getArtist();
+    public Audio() {
     }
 
-
-    @Bindable
     public String getPath() {
         return path;
     }
@@ -29,7 +17,6 @@ public class ViewModelItemFavoriteModel extends BaseObservable {
         this.path = path;
     }
 
-    @Bindable
     public String getName() {
         return name;
     }
@@ -38,7 +25,6 @@ public class ViewModelItemFavoriteModel extends BaseObservable {
         this.name = name;
     }
 
-    @Bindable
     public String getAlbum() {
         return album;
     }
@@ -47,7 +33,6 @@ public class ViewModelItemFavoriteModel extends BaseObservable {
         this.album = album;
     }
 
-    @Bindable
     public String getArtist() {
         return artist;
     }
@@ -55,5 +40,4 @@ public class ViewModelItemFavoriteModel extends BaseObservable {
     public void setArtist(String artist) {
         this.artist = artist;
     }
-
 }

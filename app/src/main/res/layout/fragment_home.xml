@@ -87,8 +87,10 @@
             />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_favorite"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            bind:recyclerViewPlayList="@{viewModel.mutableLiveDataFavorite}"
             android:layout_below="@id/favorite_tv"
             android:background="@color/test_purple"/>
 

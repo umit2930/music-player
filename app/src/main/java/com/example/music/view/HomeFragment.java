@@ -24,7 +24,7 @@ public class HomeFragment extends Fragment {
 
 //        binding.lParent.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
 
-        ViewModelHomeFragment viewModelHomeFragment=new ViewModelHomeFragment(getContext());
+        ViewModelHomeFragment viewModelHomeFragment=new ViewModelHomeFragment(getContext(),binding.getRoot());
         binding.setViewModel(viewModelHomeFragment);
 
         return binding.getRoot();

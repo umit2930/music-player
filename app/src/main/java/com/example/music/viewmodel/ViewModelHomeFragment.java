@@ -2,6 +2,7 @@ package com.example.music.viewmodel;
 
 import android.content.Context;
 import android.telecom.Connection;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.databinding.BaseObservable;
@@ -32,6 +33,7 @@ public class ViewModelHomeFragment extends BaseObservable {
     private String hintSearch;
     public static Context context;
 
+    public static View view;
 
     private ArrayList<ViewModelPlayListModel> arrayList=new ArrayList<>();
 
@@ -42,11 +44,12 @@ public class ViewModelHomeFragment extends BaseObservable {
 
 
 
-    public ViewModelHomeFragment(Context context) {
+    public ViewModelHomeFragment(Context context,View view) {
         //rome get text
         this.context=context;
         getText();
 
+        this.view=view;
         test();
     }
 

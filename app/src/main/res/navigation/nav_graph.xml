@@ -16,5 +16,21 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.music.view.HomeFragment"
-        android:label="HomeFragment" />
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_singelPlayListFragment2"
+            app:destination="@id/singelPlayListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/singelPlayListFragment"
+        android:name="com.example.music.view.SingelPlayListFragment"
+        android:label="SingelPlayListFragment" >
+        <action
+            android:id="@+id/action_global_singelPlayListFragment"
+            app:destination="@id/singelPlayListFragment"
+            />
+        <action
+            android:id="@+id/action_singelPlayListFragment_self"
+            app:destination="@id/singelPlayListFragment" />
+    </fragment>
 </navigation>

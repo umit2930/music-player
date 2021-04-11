@@ -1,8 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    >
+    <data
+        >
+        <variable
+            name="viewModel"
+            type="com.example.music.viewmodel.ViewModelPlayListModel" />
+    </data>
+
+
+<RelativeLayout
     android:background="@color/test_background_app"
     android:layout_width="wrap_content"
+    android:layout_marginRight="@dimen/_5sdp"
+    android:layout_marginLeft="@dimen/_5sdp"
     android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
@@ -15,7 +29,7 @@
             android:id="@+id/image"
             android:background="@color/test_background_app"
             android:layout_width="@dimen/_150sdp"
-            android:src="@color/white"
+            android:src="@={viewModel.imageUrl}"
             android:layout_height="@dimen/_150sdp"/>
     </androidx.cardview.widget.CardView>
 
@@ -28,7 +42,7 @@
         android:layout_below="@id/card"
         android:textColor="@color/white"
         android:textSize="@dimen/_16sdp"
-        android:text="kaveh"
+        android:text="@={viewModel.name}"
         android:fontFamily="@font/iran_sans_bold"/>
 
 
@@ -39,8 +53,9 @@
         android:layout_below="@id/name"
         android:textColor="@color/white"
         android:textSize="@dimen/_14sdp"
-        android:text="kaveh"
+        android:text="@={viewModel.count}"
         android:fontFamily="@font/iran_sans_regular"/>
 
 
 </RelativeLayout>
+</layout>

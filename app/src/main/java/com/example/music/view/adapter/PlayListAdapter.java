@@ -16,28 +16,36 @@ import com.example.music.R;
 import com.example.music.databinding.ItemPlayListBinding;
 import com.example.music.model.PlayListModel;
 import com.example.music.viewmodel.ViewModelHomeFragment;
+import com.example.music.viewmodel.ViewModelPlayListModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.VH> {
 
-    ViewModelHomeFragment viewModel;
-    List<PlayListModel> listModels;
+
+    private ArrayList<ViewModelPlayListModel> arrayList=new ArrayList<>();
     Context context;
 
-    View view;
+    private LayoutInflater layoutInflater;
 
-    public PlayListAdapter(ViewModelHomeFragment viewModel, List<PlayListModel> listModels, Context context) {
-        this.viewModel = viewModel;
-        this.listModels = listModels;
+
+    public PlayListAdapter(ArrayList<ViewModelPlayListModel> arrayList, Context context) {
+        this.arrayList = arrayList;
         this.context = context;
     }
 
     @NonNull
     @Override
     public VH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        view=LayoutInflater.from(parent.getContext()).inflate(R.layout.item_play_list,parent,false);
-        return new VH(view);
+
+        if (layoutInflater==null) {
+            layoutInflater = LayoutInflater.from(parent.getContext());
+        }
+        ItemPlayListBinding itemUserBinding= DataBindingUtil.inflate(layoutInflater, R.layout.item_play_list,parent,false);
+
+        return new VH(itemUserBinding);
+
     }
 
     @Override
@@ -47,12 +55,26 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.VH> {
 
     @Override
     public int getItemCount() {
-        return 0;
+        return arrayList.size();
     }
 
     public class VH extends RecyclerView.ViewHolder {
-        public VH(@NonNull View itemView) {
-            super(itemView);
+
+        ItemPlayListBinding itemPlayListBinding;
+        public VH(@NonNull ItemPlayListBinding itemPlayListBinding) {
+            super(itemPlayListBinding.getRoot());
+            this.itemPlayListBinding=itemPlayListBinding;
+        }
+
+        private void bind(ViewModelPlayListModel userViewModel){
+            this.itemPlayListBinding.setViewModel(userViewModel);
+            this.itemPlayListBinding.executePendingBindings();
+
+
+        }
+
+        public ItemPlayListBinding getItemUserBinding() {
+            return itemPlayListBinding;
         }
     }
 }

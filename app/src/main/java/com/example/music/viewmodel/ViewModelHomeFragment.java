@@ -1,15 +1,25 @@
 package com.example.music.viewmodel;
 
 import android.content.Context;
+import android.telecom.Connection;
 import android.widget.TextView;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
+import androidx.databinding.BindingAdapter;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.music.model.PlayListModel;
 import com.example.music.remote.databasetext.AppDatabase;
 import com.example.music.remote.databasetext.TextModel;
+import com.example.music.view.adapter.PlayListAdapter;
 
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Observable;
 
@@ -20,7 +30,14 @@ public class ViewModelHomeFragment extends BaseObservable {
     private String appName;
     private String favorite;
     private String hintSearch;
-    private Context context;
+    public static Context context;
+
+
+    private ArrayList<ViewModelPlayListModel> arrayList=new ArrayList<>();
+
+
+    private MutableLiveData<ArrayList<ViewModelPlayListModel>> mutableLiveData=new MutableLiveData<>();
+
 
 
 
@@ -29,7 +46,24 @@ public class ViewModelHomeFragment extends BaseObservable {
         //rome get text
         this.context=context;
         getText();
-        System.out.println("--------:"+ Locale.getDefault().getDisplayLanguage());
+
+        test();
+    }
+
+    private void test() {
+
+        ViewModelPlayListModel viewModelPlayListModel;
+        for (int i=0;i<10;i++){
+            PlayListModel playListModel=new PlayListModel();
+            playListModel.setCount(10);
+            playListModel.setImage("kdjcjdkc");
+            playListModel.setId(i);
+            playListModel.setName("کاوه کیرم دهنت");
+            viewModelPlayListModel= new ViewModelPlayListModel(playListModel);
+            arrayList.add(viewModelPlayListModel);
+
+        }
+        mutableLiveData.setValue(arrayList);
     }
 
     private void getText() {
@@ -54,6 +88,27 @@ public class ViewModelHomeFragment extends BaseObservable {
         }
     }
 
+    @BindingAdapter("bind:recyclerViewPlayList")
+    public static void recyclerViewBinding(RecyclerView recyclerView, MutableLiveData<ArrayList<ViewModelPlayListModel>> arrayListMutableLiveData)
+    {
+        arrayListMutableLiveData.observe((LifecycleOwner) recyclerView.getContext(), new Observer<ArrayList<ViewModelPlayListModel>>() {
+            @Override
+            public void onChanged(ArrayList<ViewModelPlayListModel> userViewModels) {
+                PlayListAdapter adapter=new PlayListAdapter(userViewModels,context);
+                recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext(), LinearLayoutManager.VERTICAL,false ));
+                recyclerView.setAdapter(adapter);
+
+            }
+        });
+
+
+
+
+    }
+
+    public MutableLiveData<ArrayList<ViewModelPlayListModel>> getMutableLiveData() {
+        return mutableLiveData;
+    }
 
     @Bindable
     public String getHintSearch() {

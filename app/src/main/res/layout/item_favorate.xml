@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.music.viewmodel.ViewModelItemFavoriteModel" />
+    </data>
+    <LinearLayout
+         android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:background="@color/test_background_app"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="@dimen/_80sdp"
+            android:padding="@dimen/_20sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:src="@drawable/ic_music"
+            android:background="@color/search_box"/>
+
+        <LinearLayout
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_width="@dimen/_170sdp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/iran_sans_regular"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_22sdp"
+                android:text="mohsen chavoshi"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/iran_sans_regular"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_18sdp"
+                android:text="naser razazi"/>
+
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_margin="@dimen/_10sdp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_heart"/>
+
+
+
+
+
+    </LinearLayout>
+</layout>

@@ -6,7 +6,7 @@
 
     <data >
         <variable
-            name="Viewmodel"
+            name="viewModel"
             type="com.example.music.viewmodel.ViewModelSplash" />
 
     </data>
@@ -35,7 +35,7 @@
             android:layout_centerHorizontal="true"
             android:layout_above="@id/titale"
             android:fontFamily="@font/iran_sans_regular"
-            android:text="موزیک پلیر"
+            android:text="@={viewModel.appName}"
             android:layout_marginBottom="@dimen/_10sdp"
             android:textColor="@color/test_purple"
             />
@@ -47,7 +47,7 @@
             android:fontFamily="@font/iran_sans_regular"
             android:layout_alignParentBottom="true"
             android:id="@+id/titale"
-            android:text="v 1.0.0"
+            android:text="@={viewModel.appVersion}"
             android:layout_marginBottom="@dimen/_10sdp"
             android:textColor="@color/test_purple"
             />

@@ -25,7 +25,7 @@ public class SplashFragment extends Fragment {
         binding=FragmentSplashBinding.inflate(getLayoutInflater());
 
         ViewModelSplash viewModelSplash=new ViewModelSplash(getContext());
-        binding.setViewmodel(viewModelSplash);
+        binding.setViewModel(viewModelSplash);
         return binding.getRoot();
     }
 

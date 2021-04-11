@@ -58,7 +58,7 @@ public class ViewModelHomeFragment extends BaseObservable {
             playListModel.setCount(10);
             playListModel.setImage("kdjcjdkc");
             playListModel.setId(i);
-            playListModel.setName("کاوه کیرم دهنت");
+            playListModel.setName("can i help you");
             viewModelPlayListModel= new ViewModelPlayListModel(playListModel);
             arrayList.add(viewModelPlayListModel);
 
@@ -95,7 +95,7 @@ public class ViewModelHomeFragment extends BaseObservable {
             @Override
             public void onChanged(ArrayList<ViewModelPlayListModel> userViewModels) {
                 PlayListAdapter adapter=new PlayListAdapter(userViewModels,context);
-                recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext(), LinearLayoutManager.VERTICAL,false ));
+                recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext(), LinearLayoutManager.HORIZONTAL,false ));
                 recyclerView.setAdapter(adapter);
 
             }

@@ -27,9 +27,8 @@
 
         <ImageView
             android:id="@+id/image"
-            android:background="@color/test_background_app"
+            android:background="@color/white"
             android:layout_width="@dimen/_150sdp"
-            android:src="@={viewModel.imageUrl}"
             android:layout_height="@dimen/_150sdp"/>
     </androidx.cardview.widget.CardView>
 
@@ -37,7 +36,7 @@
     <TextView
         android:id="@+id/name"
         android:layout_marginTop="@dimen/_8sdp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/card"
         android:textColor="@color/white"
@@ -48,7 +47,7 @@
 
     <TextView android:id="@+id/count"
         android:layout_marginTop="@dimen/_8sdp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/name"
         android:textColor="@color/white"

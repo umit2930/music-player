@@ -50,6 +50,7 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.VH> {
 
     @Override
     public void onBindViewHolder(@NonNull VH holder, int position) {
+        holder.bind(arrayList.get(position));
 
     }
 

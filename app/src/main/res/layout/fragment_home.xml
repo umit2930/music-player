@@ -74,8 +74,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/play_list_tv"
             bind:recyclerViewPlayList="@{viewModel.mutableLiveData}"
-
-            android:background="@color/test_purple"
             />
         <TextView android:id="@+id/favorite_tv"
             android:layout_marginTop="@dimen/_20sdp"

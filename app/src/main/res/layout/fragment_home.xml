@@ -1,99 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+
     xmlns:bind="recyclerViewPlayList"
-
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
 
-    tools:ignore="NamespaceTypo"
-    >
+    tools:ignore="NamespaceTypo">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.music.viewmodel.ViewModelHomeFragment" />
     </data>
 
-    <RelativeLayout android:id="@+id/l_parent"
+    <RelativeLayout
+        android:id="@+id/l_parent"
         android:layout_width="match_parent"
-        android:padding="@dimen/_10sdp"
+        android:layout_height="match_parent"
         android:background="@color/test_background_app"
-        android:layout_height="match_parent">
+        android:padding="@dimen/_10sdp">
 
-        <TextView android:id="@+id/hed_tv"
+
+        <TextView
+            android:id="@+id/hed_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@={viewModel.appName}"
             android:fontFamily="@font/iran_sans_bold"
+            android:text="@={viewModel.appName}"
             android:textColor="@color/white"
-            android:textSize="@dimen/_22sdp"/>
+            android:textSize="@dimen/_18sdp" />
 
         <LinearLayout
             android:id="@+id/l1"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_50sdp"
+            android:layout_height="wrap_content"
             android:layout_below="@id/hed_tv"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:padding="@dimen/_6sdp"
+            android:layout_marginTop="@dimen/_12sdp"
             android:background="@drawable/search_box_background"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingRight="@dimen/_6sdp"
+            android:paddingLeft="@dimen/_6sdp">
 
             <ImageView
-                android:layout_width="@dimen/_35sdp"
-                android:layout_height="@dimen/_35sdp"
-                android:src="@drawable/ic_search_24"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
                 android:layout_gravity="center"
-                />
+                android:src="@drawable/ic_search_24" />
 
-            <EditText android:id="@+id/search_et"
+            <EditText
+                android:id="@+id/search_et"
+                android:singleLine="true"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="Song or artist..."
-                android:fontFamily="@font/iran_sans_regular"
-                android:textColor="@color/test_purple"
-                android:textSize="@dimen/_16sdp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textColorHint="@color/white"/>
+                android:fontFamily="@font/iran_sans_regular"
+                android:hint="Song or artist..."
+                android:textColor="@color/test_purple"
+                android:textColorHint="@color/white"
+                android:textSize="@dimen/_14sdp" />
 
         </LinearLayout>
 
-        <TextView android:id="@+id/play_list_tv"
-            android:layout_below="@id/l1"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@={viewModel.playList}"
-            android:textSize="@dimen/_20sdp"
-            android:textColor="@color/white"
-            android:fontFamily="@font/iran_sans_bold"
-            />
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view__play_list"
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/play_list_tv"
-            bind:recyclerViewPlayList="@{viewModel.mutableLiveData}"
-            />
-        <TextView android:id="@+id/favorite_tv"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@={viewModel.favorite}"
-            android:textSize="@dimen/_20sdp"
-            android:fontFamily="@font/iran_sans_bold"
-            android:textColor="@color/white"
-            android:layout_below="@id/recycler_view__play_list"
-            />
+            android:layout_height="match_parent"
+            android:layout_below="@id/l1">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view_favorite"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            bind:recyclerViewPlayList="@{viewModel.mutableLiveDataFavorite}"
-            android:layout_below="@id/favorite_tv"
-            android:background="@color/test_purple"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
+            <TextView
+                android:id="@+id/play_list_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:fontFamily="@font/iran_sans_bold"
+                android:text="@={viewModel.playList}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_16sdp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view__play_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/play_list_tv"
+                bind:recyclerViewPlayList="@{viewModel.mutableLiveData}" />
+
+            <TextView
+                android:id="@+id/favorite_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/recycler_view__play_list"
+                android:layout_marginTop="@dimen/_1sdp"
+                android:fontFamily="@font/iran_sans_bold"
+                android:text="@={viewModel.favorite}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_16sdp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_favorite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/favorite_tv"
+                android:background="@color/test_purple"
+                bind:recyclerViewPlayList="@{viewModel.mutableLiveDataFavorite}" />
+
+
+            </RelativeLayout>
+
+        </androidx.core.widget.NestedScrollView>
 
     </RelativeLayout>
 

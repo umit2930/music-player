@@ -7,24 +7,28 @@
             name="viewModel"
             type="com.example.music.viewmodel.ViewModelItemFavoriteModel" />
     </data>
-    <LinearLayout
+    <RelativeLayout
          android:layout_width="match_parent"
         android:orientation="horizontal"
         android:background="@color/test_background_app"
         android:layout_height="wrap_content">
 
         <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/image"
             android:layout_width="@dimen/_80sdp"
-            android:padding="@dimen/_20sdp"
+            android:padding="@dimen/_10sdp"
             android:layout_height="@dimen/_80sdp"
-            android:src="@drawable/ic_music"
-            android:background="@color/search_box"/>
+            android:src="@drawable/music"
+            android:background="@color/test_background_app"/>
 
         <LinearLayout
+            android:id="@+id/l1"
+            android:layout_toRightOf="@id/image"
+            android:layout_toLeftOf="@id/heart"
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginRight="@dimen/_10sdp"
-            android:layout_width="@dimen/_170sdp"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_80sdp"
             android:orientation="vertical">
 
 
@@ -52,15 +56,17 @@
         </LinearLayout>
 
         <ImageView
+            android:id="@+id/heart"
+            android:layout_alignParentRight="true"
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_20sdp"
             android:layout_margin="@dimen/_10sdp"
-            android:layout_gravity="center"
+            android:layout_centerVertical="true"
             android:src="@drawable/ic_heart"/>
 
 
 
 
 
-    </LinearLayout>
+    </RelativeLayout>
 </layout>

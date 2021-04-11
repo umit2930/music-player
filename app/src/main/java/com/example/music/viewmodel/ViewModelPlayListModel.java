@@ -33,7 +33,7 @@ public class ViewModelPlayListModel  extends BaseObservable {
     public void onClickItem(int id){
         Bundle bundle=new Bundle();
         bundle.putInt("id",id);
-        Navigation.findNavController(ViewModelHomeFragment.view).navigate(R.id.action_homeFragment_to_scrollingFragment,bundle);
+        Navigation.findNavController(ViewModelHomeFragment.view).navigate(R.id.action_homeFragment_to_singelPlayListFragment2,bundle);
     }
 
     @Bindable

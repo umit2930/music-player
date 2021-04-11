@@ -13,6 +13,12 @@ import com.example.music.R;
 
 class ScrollingFragment extends Fragment {
 
+
+
+
+    public ScrollingFragment(){
+
+    }
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,

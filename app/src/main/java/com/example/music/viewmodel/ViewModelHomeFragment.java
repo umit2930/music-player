@@ -1,6 +1,10 @@
 package com.example.music.viewmodel;
 
+import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Context;
+import android.database.Cursor;
+import android.net.Uri;
 import android.telecom.Connection;
 import android.view.View;
 import android.widget.TextView;
@@ -55,6 +59,7 @@ public class ViewModelHomeFragment extends BaseObservable {
 
     private void test() {
 
+
         ViewModelPlayListModel viewModelPlayListModel;
         for (int i=0;i<10;i++){
             PlayListModel playListModel=new PlayListModel();
@@ -67,6 +72,8 @@ public class ViewModelHomeFragment extends BaseObservable {
 
         }
         mutableLiveData.setValue(arrayList);
+
+
     }
 
     private void getText() {

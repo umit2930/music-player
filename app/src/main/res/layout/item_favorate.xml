@@ -36,7 +36,7 @@
                 android:singleLine="true"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_22sdp"
-                android:text="mohsen chavoshi"/>
+                android:text="@={viewModel.name}"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -44,7 +44,8 @@
                 android:fontFamily="@font/iran_sans_regular"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_18sdp"
-                android:text="naser razazi"/>
+                android:singleLine="true"
+                android:text="@={viewModel.albom"/>
 
 
 

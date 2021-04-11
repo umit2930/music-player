@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
             Toast.makeText(this, ""+c.getCount(), Toast.LENGTH_SHORT).show();
 
-            System.out.println("-------------------:"+c.getCount());
+            System.out.println("-------------------:"+c);
             if (c != null) {
                 while (c.moveToNext()) {
                     MediaStore.Audio audioModel = createAudioModel(c);

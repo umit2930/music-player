@@ -1,4 +1,10 @@
 package com.example.music.viewmodel;
 
-public class ViewModelItemFavoriteModel {
+import androidx.databinding.BaseObservable;
+
+public class ViewModelItemFavoriteModel extends BaseObservable {
+    public String name;
+    public String albpm;
+
+
 }
